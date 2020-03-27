@@ -1,0 +1,234 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+body{
+    font-family:poppins;
+    background:linear-gradient(to right,#517504,#5e830e),no-repeat;
+    /* border: solid 100px red; */
+}
+*::selection{
+    background:#89c704;
+}
+  body::after{
+      content:'';
+      position: absolute;
+      width:100%;
+      min-height:100vh;
+      /* background:rgba(0, 0, 0, 0.308); */
+      top:0;
+      left:0;
+      z-index:-1;
+      
+  }
+h2{
+    text-align: center;
+    margin:1em;
+    text-transform: uppercase;
+    font-size:2rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: rgb(240, 233, 233);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.459);
+    z-index:1;
+
+}
+.main-info{
+    background-color: white;
+    padding:1em;
+    margin:1em;
+    border-radius:1em;
+
+}
+.line{
+    display:flex;
+    justify-content: space-around;
+    background:linear-gradient(to right,#81bb03,#6c9b06),no-repeat;
+    padding:1em 0;
+    border-radius:1em;
+    font-weight: 800;
+    color: rgb(59, 59, 59);
+    text-shadow: 3px 3px 8px rgba(255, 254, 254, 0.459);
+
+    
+}
+h3{
+    font-size:1.2rem;
+}
+.contact{
+    display:flex;
+    justify-content: space-between;
+    padding:0 5em;
+    margin:1em 0;
+    font-weight: 500;
+}
+.contact span{
+    color:#999;
+}
+.desc span{
+    display:block;
+    font-weight: 500;
+    font-size:1.1rem;
+    margin:.8em 0;
+    color:black;
+
+
+}
+.desc{
+    display:flex;
+    padding:1em;
+}
+.desc p{
+    color:rgb(109, 109, 109);
+    width:50%;
+    word-wrap: wrap ;
+}
+
+
+
+/************************************************/
+main a{
+    
+    text-decoration:none;
+    color:rgba(28, 28, 28, 0.781);
+    display:inline-block;
+    /* margin-top:2em; */
+    padding:.7em 3em;
+    background:rgb(240, 233, 233);
+    box-shadow:2px 2px 10px rgba(0, 0, 0, 0.342);
+    width:fit-content;
+    align-self:flex-end;
+    justify-self: flex-end;
+    font-weight:600;
+    position:relative;
+    z-index:2;
+    overflow: hidden;
+    /* margin-left:80vw; */
+
+}
+a::after{
+    content: '';
+    position: absolute;
+    width:30%;
+    height:100%;
+    background:#81bb03e7;
+    top:0;
+    left:-35%;
+    z-index: -1;
+    transform:skew(-45deg);
+    transition: .4s;
+    transform-origin: right;
+}
+a:hover::after{
+    left:110%;
+    /* background:red; */
+}
+.status,.btn{
+    /* width:100%; */
+    /* margin:0 auto; */
+    text-align: right;
+    margin-right:3em;
+    margin-bottom:1em ;
+
+}
+label{
+    padding:.5em 2em;
+    border:2px solid #81bb03;
+    border-radius:1em;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.24);
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor:pointer;
+  letter-spacing: 2px;
+  transition: .4s;
+}
+input:checked  p .Unsolved{
+    background:red;
+}
+.Solved{
+    color: rgb(240, 233, 233);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.459);
+    
+    background-color:#81bb03;
+}
+.Unsolved.active{
+    position:relative;
+}
+.Unsolved::before{
+    content:'';
+    position:absolute;
+    width:.5em;
+    height:1em;
+    border:solid 3px #81bb03;
+    border-width: 0 5px  5px 0;
+    left:-1.5em;
+    transform:rotate(45deg);
+    transition: .4s;
+
+}
+label+ input[type=checkbox]{
+    position: absolute;
+    opacity:0;
+    display:none;
+} 
+.commit{
+    text-align:center;
+}
+input[type=submit]{
+    margin:2em 0;
+    width:30%;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor:pointer;
+    letter-spacing: 2px;
+    transition:.4s;
+    /* background-color: white; */
+    height:3em;
+    padding:0 1em 0 1.5em;
+    border:2px solid #81bb03;
+    border-radius:150px;
+    outline:none;
+    font-size:1rem;
+    z-index:1;
+  }
+  input[type=submit]:hover{
+    color: rgb(240, 233, 233);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.459);
+  
+    background-color:#81bb03;
+    
+  }
+input:checked + p label{
+    background:red;
+}
+div + label{
+    display:none;
+}
+@media(max-width:1070px){
+    .contact{
+        flex-direction:column;
+        padding:0;
+        margin:.5em;
+    }
+    .desc{
+        flex-direction:column;
+        padding:.5em;
+    }
+    main a{
+        margin-left:30vw;
+    }
+    .status{
+        text-align:center;
+        margin:0;
+    }
+
+    .desc p{
+        width:100%;
+        font-size:.9rem;
+        /* color:red; */
+        overflow-x:scroll;
+        margin-bottom:1em;
+    }
+
+}
