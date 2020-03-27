@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Report Page</title>
+    <link rel="stylesheet" href="{%static 'User/page.css' %}">
+</head>
+<body>
+    <main>
+        <h2>Report the crime here</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <span><a href="{% url 'home' %}"><</a></span>
+            {{form.db_name}}
+            <label for="name">Your name</label>
+
+            {{form.db_ph_no}}
+            <label for="phone">Phone no.</label>
+
+            {{form.db_email}}
+            <label for="email">E-mail</label>
+
+            {{form.db_crime_subject}}
+            <label for="crime-subject">Subject of crime</label>
+
+            <label for="crime-des">Description of crime:</label>
+            {{form.db_crime_description}}
+
+            <label for="more-info">Anything more you want to add:</label>
+            {{form.db_more_info}}
+
+            <input type="submit" value="Report">
+        </form>
+    </main>
+</body>
+</html>

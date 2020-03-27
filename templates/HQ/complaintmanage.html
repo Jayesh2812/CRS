@@ -1,0 +1,75 @@
+{% load static %}
+{% load mathfilters%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View the Complaints</title>
+    <link rel="stylesheet" href="{% static 'Incharges/view.css' %}">
+    <script>
+function myFunction(x) {
+   var element = document.getElementById("unsolved"+x);
+   element.classList.toggle("active");
+}
+    </script>
+</head>
+ {% if user.is_authenticated %}
+<body>
+    <h2>CRIME REPORTS</h2>
+    <form action="" method="POST">
+
+    <main>
+
+        <p class="btn"> <a href="#commit">COMMIT</a></p>
+            {% csrf_token %}
+            {% for o,f  in objform %}
+        {{formset.management_form}}
+
+        <div class="main-info">
+            <div class="info">
+                <div class="line">
+                    <span>{{o.id}}</span> 
+                    <h3>    {{o.db_crime_subject|capfirst}} </h3>
+
+                    <span class="True">Solved</span>
+                </div>
+                <div class="info-desc">
+                    <div class="contact">
+
+                        <p><span> Reported by :-</span> {{o.db_name|capfirst  }}</p>
+                        <p><span> Reporter's contact :-</span> {{o.db_email}} / {{o.db_ph_no}}</p>
+                    </div>
+                    <div class="desc">
+                        <p>
+                        <span>Description:-</span>
+                        {{o.db_crime_description|safe}}</p>
+                        <p>
+                        <span>More Info :-</span>
+                        {{o.db_more_info}}</p>
+
+                    </div>
+                    {{f}}
+                    {% if o.db_case_solved %}
+                    <p class="status"><label class="Solved" for="id__form-{{o.id|sub:1}}-db_case_solved">Case Solved</label></p>
+                    {% else %}
+                    <p class="status"><label class="Unsolved" id="unsolved{{o.id}}" onclick="myFunction({{o.id}})" for="id_form-{{o.id|sub:1}}-db_case_solved">Solved ?</label></p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+                    {%endfor%}
+                    
+        <p class="commit"><input type="submit" id="commit" value="COMMIT & LOGOUT"></p>
+    </main>
+    </form>
+</body>
+{% else %}
+    <body>
+    YOU NEED TO BE LOGGED IN AS HQ
+    </body>
+ {% endif %}
+
+</html>

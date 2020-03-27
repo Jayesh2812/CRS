@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'User/home.css'%}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="logo">CRS</h1>
+
+        </nav>
+    </header>
+    <main>
+        
+        <div class="main-info">
+            <h1 class="message">Welcome, to the crime reporting system</h1>
+            <div class="infos">
+                <div class="first info-div">
+                    <h2 class="info">Report a crime here</h2>
+                    <p>You can report a crime here
+                        by simply providing description
+                    </p>
+                    {% if user.is_authenticated %}
+                    {% else %}
+                    <a href="{% url 'complaint_form' %}">Report</a>
+                    {% endif %}
+
+                </div>
+                <div class="second info-div">
+                    <h2 class="info">Police Incharges</h2>
+                    <p>Officers login here to see the available reports</p>
+                    {% if user.is_authenticated %}
+                    {% else %}
+                    <a href="{% url 'Ilogin' %}">Login </a>
+                    {% endif %}
+                </div>
+                <div class="third info-div ">
+                    <h2 class="info">Head quaters HQ's</h2>
+                    <p>Police Headquaters can login here and manage complaints</p>
+                    {% if user.is_authenticated %}
+                    {% else %}
+                    <a href="{% url 'HQlogin' %}">Login </a>
+                    {% endif %}
+
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+                <p class="logout"><a class="logout" href="/logout">Logout</a></p>
+            {% endif %}
+        </div>
+        <div class="mahiti">
+            <h2>Why Crime Reporting System ?</h2>
+            <p>&nbsp &nbsp &nbsp Crime is a part of illegal activities in human life. It is quite obvious that the rate
+                of crimes is
+                increasing day by day in all societies across the world, but we do believe that there is a lot which can
+                be
+                done by both the governments and the individuals to reduce the crimes in communities. The rise of
+                population
+                and complex society rises the range of anti-social conducts that must be restricted by the government
+                through the military and different organizations particularly the Police Force. There are many current
+                crime
+                management systems which faces several difficulties, as there is no means to report crime instantly
+                other
+                than phone calls, messaging or face-to-face compliant filing. Hence, Nevon Projects has proposed an
+                online
+                crime reporting system which allows the user to file complaints or missing reports and keep a track of
+                it.
+            </p>
+            <p>
+                &nbsp &nbsp &nbsp There are three categories in Crime reporting system viz
+                <ul>
+                    <li><span>The User </span>- He/She will log the complaints</li>
+                    <li><span>Incharges</span>- Personal to take action on the complaints</li>  
+                    <li><span>HeadQuaters0</span>- HQ's will be able to manage the complaints</li>
+                </ul>
+
+            </p>
+        </div>
+    </main>
+
+</body>
+
+</html>
